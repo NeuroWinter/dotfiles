@@ -1,0 +1,84 @@
+# Set up PATHS
+export PATH="$HOME/.npm-global/bin:$PATH"                        # npm global packages
+export PATH="$PATH:$HOME/Android/Sdk/tools:$HOME/Android/Sdk/platform-tools"
+export PATH="$PATH:$HOME/.rvm/bin:/usr/local/go/bin:$HOME/go/bin"
+export PATH="$PATH:$HOME/.local:$HOME/apps/gcc-arm-none-eabi-9-2019-q4-major/bin"
+export PATH="$PATH:$HOME/.local/kitty.app/bin:/opt/nvim-linux64/bin"
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
+# ENVIRONMENT VARIABLES
+export ZSH="$HOME/.oh-my-zsh"
+export GOPATH="$HOME/go"
+export GEM_HOME="$HOME/gems"
+export PATH="$GEM_HOME/bin:$PATH"
+
+export VISUAL=nvim
+export EDITOR="$VISUAL"
+export TERMINAL=kitty
+
+
+# Venv wrappers
+export WORKON_HOME="$HOME/envs"
+export VIRTUALENVWRAPPER_PYTHON="/usr/bin/python3.12"
+source "$HOME/.local/bin/virtualenvwrapper.sh"
+
+# OMZ
+ZSH_THEME="dracula-pro"
+plugins=(
+  git
+  sudo
+  # microk8s
+  # kubectl
+  docker-compose
+  aliases
+  asdf
+  alias-finder
+)
+
+source "$ZSH/oh-my-zsh.sh"
+
+# shell sutff and completions
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+autoload -Uz compinit
+compinit
+
+# FZF theme
+#export FZF_DEFAULT_OPTS='--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4'
+
+# Append completions to fpath for asdf
+fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+
+# Kitty shell integration
+kitty + complete setup zsh | source /dev/stdin
+
+# Aliases
+alias ls="exa"
+alias la="exa -lah"
+alias gdiff="git difftool --no-symlinks --dir-diff"
+unalias zz 2>/dev/null
+zz() {
+  local dest
+  dest=$(zoxide query -ls | sort -n | fzf --tac \
+    --preview="echo {} | awk '{print \$2}' | xargs ls -lh --color=always" \
+    | awk '{print $2}')
+  [[ -n "$dest" ]] && cd "$dest"
+}
+
+
+# Node version manager stuff - not sure if this is still needed.
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
+
+
+# alias finder stuff - this bascially shows me the alias I should use when
+# I run a full command.
+zstyle ':omz:plugins:alias-finder' autoload yes
+zstyle ':omz:plugins:alias-finder' longer yes
+zstyle ':omz:plugins:alias-finder' exact yes
+zstyle ':omz:plugins:alias-finder' cheaper yes
+
+
+# Extra fun stuff.
+eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"

@@ -1,0 +1,64 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Prompt
+format = """$username$hostname$directory$git_branch$git_status"""
+add_newline = false  # This is to stop the new line at the top of the terminal when I open a new shell.
+
+right_format = """$cmd_duration $docker_context $kubernetes ${custom.local_time} ${custom.utc_time}"""
+
+
+[username]
+format = "[$user]($style) on "
+style_user = "bold #8be9fd"
+show_always = true
+
+[hostname]
+ssh_only = false
+style = "bold #bd93f9"
+
+# ── Visual Prompt Symbol ──
+# [character]
+# error_symbol = "[λ](bold #ff5555)"
+# success_symbol = "[λ](bold #50fa7b)"
+
+# last command cmd_duration
+[cmd_duration]
+style = "bold #f1fa8c"
+
+# dir info
+[directory]
+style = "bold #50fa7b"
+truncate_to_repo = false
+truncation_length = 3
+truncation_symbol = "…/"
+
+# git stuff
+[git_branch]
+style = "bold #ff79c6"
+
+[git_status]
+style = "bold #ff5555"
+
+# Docker stuff
+[docker_context]
+symbol = "🐳 "
+style = "bold #8be9fd"
+only_with_files = true
+format = "[$symbol$context]($style)"
+
+# AWS
+[aws]
+style = "bold #ffb86c"
+
+# ── Local Time ──
+[custom.local_time]
+command = "date '+%Y-%m-%d %H:%M:%S %Z'"
+when = "true"
+style = "bold blue"
+
+# ── UTC Time ──
+[custom.utc_time]
+command = "date -u '+%Y-%m-%d %H:%M:%S UTC'"
+when = "true"
+style = "bold yellow"
+
