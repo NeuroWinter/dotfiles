@@ -16,6 +16,11 @@ map("n", "<leader>ff", function() require("snacks").picker.smart() end, { desc =
 map("n", "<leader>b", function() require("snacks").picker.buffers() end, { desc = "Buffers" })
 map("n", "<leader>g", function() require("snacks").picker.grep() end, { desc = "Grep" })
 
+
+-- Commenter
+
+map("n", "<leader>cc", "<Plug>NERDCommenterToggle", { desc = "Toggle comment (line)" })
+map("v", "<leader>cc", "<Plug>NERDCommenterToggle", { desc = "Toggle comment (visual)" })
 -- help tags (fallback to telescope)
 local ok, builtin = pcall(require, "telescope.builtin")
 if ok then
@@ -40,6 +45,11 @@ if wk_ok then
     { "[d", vim.diagnostic.goto_prev, desc = "Prev Diagnostic" },
     { "]d", vim.diagnostic.goto_next, desc = "Next Diagnostic" },
 
+    -- commenter stuff
+    { "<leader>cc", "<Plug>NERDCommenterToggle", desc = "Toggle Comment" },
+    { "<leader>c", group = "Comments" },
+
+
     -- LSP jazz is defined in the config/lsp.lua file.
 
     -- group labels (flat spec style)
@@ -47,6 +57,8 @@ if wk_ok then
     { "<leader>b", group = "buffers" },
     { "<leader>g", group = "grep" },
     { "<leader>d", group = "diagnostics" },
+
+
   })
 end
 
