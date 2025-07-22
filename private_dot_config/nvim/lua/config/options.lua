@@ -48,3 +48,10 @@ vim.opt.writebackup = false
 
 -- disable arrow keys
 vim.g.elite_mode = 1
+
+-- Snacks spesific options 
+-- This is to make sure that the files picker are not grey and almost invisable:
+vim.api.nvim_set_hl(0, "SnacksPickerDir", { link = "Text" })
+vim.api.nvim_set_hl(0, "SnacksPickerPathHidden", { link = "Text" })
+vim.api.nvim_set_hl(0, "SnacksPickerPathIgnored", { link = "Comment" })
+vim.api.nvim_set_hl(0, "SnacksPickerGitStatusUntracked", { link = "Special" })

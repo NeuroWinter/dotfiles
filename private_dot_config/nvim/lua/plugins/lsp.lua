@@ -27,9 +27,6 @@ return {
     end
   },
 
-  -- Deprecated, so REMOVE this:
-  -- "williamboman/nvim-lsp-installer", -- ❌
-
   -- Fancy LSP UI
   {
     "nvimdev/lspsaga.nvim",

@@ -3,7 +3,7 @@ export PATH="$HOME/.npm-global/bin:$PATH"                        # npm global pa
 export PATH="$PATH:$HOME/Android/Sdk/tools:$HOME/Android/Sdk/platform-tools"
 export PATH="$PATH:$HOME/.rvm/bin:/usr/local/go/bin:$HOME/go/bin"
 export PATH="$PATH:$HOME/.local:$HOME/apps/gcc-arm-none-eabi-9-2019-q4-major/bin"
-export PATH="$PATH:$HOME/.local/kitty.app/bin:/opt/nvim-linux64/bin"
+export PATH="$PATH:$HOME/.local/kitty.app/bin:/opt/nvim-linux-x86_64/bin"
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 # ENVIRONMENT VARIABLES
