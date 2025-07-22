@@ -6,11 +6,23 @@ add_newline = false  # This is to stop the new line at the top of the terminal w
 
 right_format = """$cmd_duration $docker_context $kubernetes ${custom.local_time} ${custom.utc_time}"""
 
+palette = "rose-pine-moon"
+
+[palettes.rose-pine-moon]
+overlay = '#393552'
+love = '#eb6f92'
+gold = '#f6c177'
+rose = '#ea9a97'
+pine = '#3e8fb0'
+foam = '#9ccfd8'
+iris = '#c4a7e7'
+
 
 [username]
 format = "[$user]($style) on "
-style_user = "bold #8be9fd"
+style_user = "bold iris"
 show_always = true
+
 
 [hostname]
 ssh_only = false
@@ -27,17 +39,21 @@ style = "bold #f1fa8c"
 
 # dir info
 [directory]
-style = "bold #50fa7b"
+style = "bold pine"
 truncate_to_repo = false
 truncation_length = 3
 truncation_symbol = "…/"
 
+[fill]
+style = "fg:overlay"
+symbol = " "
+
 # git stuff
 [git_branch]
-style = "bold #ff79c6"
+style = "bold foam"
 
 [git_status]
-style = "bold #ff5555"
+style = "bold love"
 
 # Docker stuff
 [docker_context]
@@ -54,11 +70,23 @@ style = "bold #ffb86c"
 [custom.local_time]
 command = "date '+%Y-%m-%d %H:%M:%S %Z'"
 when = "true"
-style = "bold blue"
+style = "fg:rose"
 
 # ── UTC Time ──
 [custom.utc_time]
 command = "date -u '+%Y-%m-%d %H:%M:%S UTC'"
 when = "true"
-style = "bold yellow"
+style = "fg:gold"
 
+# # ── Local Time ──
+# [custom.local_time]
+# command = "date '+%Y-%m-%d %H:%M:%S %Z'"
+# when = "true"
+# style = "bold blue"
+#
+# # ── UTC Time ──
+# [custom.utc_time]
+# command = "date -u '+%Y-%m-%d %H:%M:%S UTC'"
+# when = "true"
+# style = "bold yellow"
+#
