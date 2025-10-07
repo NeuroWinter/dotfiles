@@ -17,8 +17,9 @@ lint.linters.ruff = {
 lint.linters_by_ft = {
   python = { "ruff" },
   terraform = { "tflint", "tfsec" },
-  -- elixir = { "mix", "credo" },
+  elixir = { "credo" },
   sh = { "shellcheck" },
+  ts = { "eslint" },
 }
 
 -- Autocommand group for auto-linting

@@ -21,6 +21,7 @@ export TERMINAL=kitty
 export WORKON_HOME="$HOME/envs"
 export VIRTUALENVWRAPPER_PYTHON="/usr/bin/python3.12"
 source "$HOME/.local/bin/virtualenvwrapper.sh"
+source "$HOME/.env_red"
 
 # OMZ
 ZSH_THEME="dracula-pro"
