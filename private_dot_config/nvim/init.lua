@@ -1,3 +1,8 @@
+-- Here we are gonna make sure that we are using a python venv that has nvim in it:
+-- python3 -m venv ~/.venvs/nvim
+-- ~/.venvs/nvim/bin/python -m pip install -U pip pynvim
+vim.g.python3_host_prog = vim.fn.expand("~/.venvs/nvim/bin/python3")
+
 -- Plugin bootstrap and Lazy.nvim plugin specs
 require("plugins")  -- loads from lua/plugins/init.lua
 
